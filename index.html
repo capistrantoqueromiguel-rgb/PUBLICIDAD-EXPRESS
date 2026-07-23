@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios de Impresión y Publicidad</title>
+    <style>
+        :root {
+            --primary: #0056b3;
+            --secondary: #ff6b08;
+            --dark: #222;
+            --light: #f8f9fa;
+            --gray: #e9ecef;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* HEADER & NAVBAR */
+        header {
+            background: #ffffff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('espectacular.jpg') center/cover no-repeat;
+            color: white;
+            text-align: center;
+            padding: 5rem 1rem;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.2s, background 0.3s;
+        }
+
+        .btn:hover {
+            background: #e05a00;
+            transform: translateY(-2px);
+        }
+
+        /* GALLERY SECTION */
+        .gallery-container {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2.5rem;
+            color: var(--dark);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--secondary);
+            margin: 0.5rem auto 0;
+            border-radius: 2px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .card-img-wrapper {
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+            background-color: var(--gray);
+        }
+
+        .card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .card:hover .card-img {
+            transform: scale(1.05);
+        }
+
+        .card-content {
+            padding: 1.2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .badge {
+            align-self: flex-start;
+            background: #e1f0ff;
+            color: var(--primary);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.3rem 0.6rem;
+            border-radius: 12px;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .card-desc {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 4rem;
+        }
+
+        footer img {
+            height: 40px;
+            margin-bottom: 1rem;
+            filter: brightness(0) invert(1);
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="nav-container">
+            <img src="logo.png" alt="Logotipo" class="logo-img">
+            <nav>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#galeria">Catálogo</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="inicio">
+        <h1>Soluciones Profesionales de Impresión y Publicidad</h1>
+        <p>Impulsamos la imagen de tu negocio con materiales de alta calidad y diseño impecable.</p>
+        <a href="#galeria" class="btn">Ver Catálogo</a>
+    </section>
+
+    <!-- GALERÍA / PRODUCTOS CLASIFICADOS -->
+    <section class="gallery-container" id="galeria">
+        <h2 class="section-title">Nuestra Galería de Productos</h2>
+        
+        <div class="gallery-grid">
+            
+            <!-- 1. Espectaculares -->
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="espectacular.jpg" alt="Espectaculares Gran Formato" class="card-img">
+                </div>
+                <div class="card-content">
+                    <span class="badge">Exterior</span>
+                    <h3 class="card-title">Anuncios Espectaculares</h3>
+                    <p class="card-desc">Impresión de gran formato y lona publicitaria para alta visibilidad urbana.</p>
+                </div>
+            </div>
+
+            <!-- 2. Tarjetas de Presentación -->
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="tarjetas.png" alt="Tarjetas de Presentación" class="card-img">
+                </div>
+                <div class="card-content">
+                    <span class="badge">Papelería</span>
+                    <h3 class="card-title">Tarjetas de Presentación</h3>
+                    <p class="card-desc">Diseños personalizados con acabados ejecutivos, mate, brillante o barniz UV.</p>
+                </div>
+            </div>
+
+            <!-- 3. Bolsas Promocionales -->
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="bolsa.jpg" alt="Bolsas Ecológicas" class="card-img">
+                </div>
+                <div class="card-content">
+                    <span class="badge">Promocional</span>
+                    <h3 class="card-title">Bolsas Ecológicas Impresas</h3>
+                    <p class="card-desc">Bolsas de tela no tejida impresas en serigrafía con tu logotipo corporativo.</p>
+                </div>
+            </div>
+
+            <!-- 4. Notas de Venta -->
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="nota-venta.png" alt="Notas de Venta Formatos" class="card-img">
+                </div>
+                <div class="card-content">
+                    <span class="badge">Editorial</span>
+                    <h3 class="card-title">Notas de Venta y Comprobantes</h3>
+                    <p class="card-desc">Formatos impresos para control administrativo y notas membretadas.</p>
+                </div>
+            </div>
+
+            <!-- 5. Bolígrafos Promocionales -->
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="plumas.png" alt="Bolígrafos Grabados" class="card-img">
+                </div>
+                <div class="card-content">
+                    <span class="badge">Promocional</span>
+                    <h3 class="card-title">Bolígrafos Personalizados</h3>
+                    <p class="card-desc">Plumas metálicas y plásticas con grabado láser o tampografía.</p>
+                </div>
+            </div>
+
+            <!-- 6. Revistas y Catálogos -->
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="revistas.jpg" alt="Revistas y Catálogos" class="card-img">
+                </div>
+                <div class="card-content">
+                    <span class="badge">Editorial</span>
+                    <h3 class="card-title">Revistas y Catálogos</h3>
+                    <p class="card-desc">Impresión editorial a todo color para revistas corporativas y folletos extensos.</p>
+                </div>
+            </div>
+
+            <!-- 7. Calendarios -->
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="calendario.jpg" alt="Calendarios de Pared" class="card-img">
+                </div>
+                <div class="card-content">
+                    <span class="badge">Publicidad</span>
+                    <h3 class="card-title">Calendarios Publicitarios</h3>
+                    <p class="card-desc">Calendarios anuales de pared y escritorio ideales para obsequios a clientes.</p>
+                </div>
+            </div>
+
+            <!-- 8. Textiles / Playeras -->
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="playera.jpg" alt="Playeras Personalizadas" class="card-img">
+                </div>
+                <div class="card-content">
+                    <span class="badge">Textil</span>
+                    <h3 class="card-title">Playeras Personalizadas</h3>
+                    <p class="card-desc">Impresión textil en serigrafía, DTF y sublimación para uniformes y eventos.</p>
+                </div>
+            </div>
+
+            <!-- 9. Vinil Adhesivo -->
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="vinil.jpg" alt="Vinil de Corte" class="card-img">
+                </div>
+                <div class="card-content">
+                    <span class="badge">Decorativo</span>
+                    <h3 class="card-title">Vinil Adhesivo y de Corte</h3>
+                    <p class="card-desc">Viniles rotulados para aparadores, cristaleras y señalética de local.</p>
+                </div>
+            </div>
+
+            <!-- 10. Trípticos -->
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="triptico.jpg" alt="Trípticos y Folletos" class="card-img">
+                </div>
+                <div class="card-content">
+                    <span class="badge">Papelería</span>
+                    <h3 class="card-title">Trípticos y Trípticos Informativos</h3>
+                    <p class="card-desc">Folletos plegables a color con papel couché de alta densidad.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contacto">
+        <img src="logo.png" alt="Logotipo Footer">
+        <p>&copy; 2026 Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>
