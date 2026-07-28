@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publicidad Express | Impresión, Artículos Promocionales y Desarrollo Web</title>
+    <!-- FontAwesome para íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --blue-dark: #0f2c59;
+            --blue-primary: #0056b3;
+            --blue-light: #e8f1f5;
+            --gray-light: #f4f6f9;
+            --gray-border: #e2e8f0;
+            --text-color: #2b2d42;
+            --whatsapp-color: #25d366;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--gray-light);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* LOGO & HEADER STYLES */
+        header {
+            background-color: #ffffff;
+            border-bottom: 2px solid var(--gray-border);
+            text-align: center;
+            padding: 1.5rem 1rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .logo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .main-logo {
+            max-width: 280px;
+            height: auto;
+            object-fit: contain;
+            margin-bottom: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .main-logo:hover {
+            transform: scale(1.02);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(135deg, var(--blue-dark), var(--blue-primary));
+            color: #ffffff;
+            text-align: center;
+            padding: 4rem 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -0.5px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 750px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            background-color: #ffffff;
+            color: var(--blue-dark);
+            font-weight: bold;
+            padding: 0.9rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+        }
+
+        .hero-btn:hover {
+            background-color: var(--blue-light);
+            transform: translateY(-2px);
+        }
+
+        /* MAIN CONTAINER & GRID */
+        .container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: var(--blue-dark);
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--blue-primary);
+            margin: 0.6rem auto 0;
+            border-radius: 2px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        /* CARD STYLES */
+        .card {
+            background: #ffffff;
+            border-radius: 12px;
+            border: 1px solid var(--gray-border);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+        }
+
+        .card-img-container {
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+            background-color: var(--blue-light);
+        }
+
+        .card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .card:hover .card-img {
+            transform: scale(1.06);
+        }
+
+        .card-body {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            color: var(--blue-dark);
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        .card-text {
+            color: #555;
+            font-size: 0.95rem;
+            margin-bottom: 1.25rem;
+            flex-grow: 1;
+        }
+
+        .card-features {
+            list-style: none;
+            margin-bottom: 1.25rem;
+        }
+
+        .card-features li {
+            font-size: 0.88rem;
+            color: #444;
+            margin-bottom: 0.4rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card-features li i {
+            color: var(--blue-primary);
+        }
+
+        .card-btn {
+            display: block;
+            text-align: center;
+            background-color: var(--blue-light);
+            color: var(--blue-primary);
+            text-decoration: none;
+            font-weight: bold;
+            padding: 0.75rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .card-btn:hover {
+            background-color: var(--blue-primary);
+            color: #ffffff;
+        }
+
+        /* WHATSAPP FLOATING BUTTON */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background-color: var(--whatsapp-color);
+            color: #ffffff;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 32px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            z-index: 1000;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: var(--blue-dark);
+            color: #ffffff;
+            text-align: center;
+            padding: 2.5rem 1rem;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 1.8rem; }
+            .hero p { font-size: 1rem; }
+            .main-logo { max-width: 220px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- LOGO DESTACADO EN LA PARTE SUPERIOR -->
+    <header>
+        <div class="logo-container">
+            <img src="logo.png" alt="Logotipo Publicidad Express" class="main-logo">
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <h1>Soluciones Integrales en Impresión y Publicidad</h1>
+        <p>Impulsamos la imagen de tu negocio con materiales impresos de alta calidad, artículos promocionales a medida y desarrollo digital.</p>
+        <a href="#catalogo" class="hero-btn">Explorar Catálogo</a>
+    </section>
+
+    <!-- CATÁLOGO DE PRODUCTOS -->
+    <main class="container" id="catalogo">
+        <h2 class="section-title">Nuestros Productos y Servicios</h2>
+
+        <div class="product-grid">
+
+            <!-- 1. Lonas Publicitarias -->
+            <div class="card">
+                <div class="card-img-container">
+                    <img src="https://images.unsplash.com/photo-1542744094-3a31216914fc?auto=format&fit=crop&w=600&q=80" alt="Lonas Publicitarias" class="card-img">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Lonas Publicitarias</h3>
+                    <p class="card-text">Lonas de alta resistencia con impresión fotográfica en gran formato. Ideales para exteriores y negocios.</p>
+                    <ul class="card-features">
+                        <li><i class="fa-solid fa-check"></i> Medidas 100% personalizadas</li>
+                        <li><i class="fa-solid fa-check"></i> <strong>¡Diseño completamente gratis!</strong></li>
+                        <li><i class="fa-solid fa-check"></i> Acabados con ojillos y dobladillo</li>
+                    </ul>
+                    <a href="https://wa.me/?text=Hola,%20me%20interesa%20cotizar%20Lonas%20Publicitarias" class="card-btn" target="_blank">Cotizar por WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- 2. Tarjetas de Presentación -->
+            <div class="card">
+                <div class="card-img-container">
+                    <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=600&q=80" alt="Tarjetas de Presentación" class="card-img">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Tarjetas de Presentación</h3>
+                    <p class="card-text">Presentación profesional ejecutiva en medida estándar 9 x 5 cm. Opciones económicas y de alta gama.</p>
+                    <ul class="card-features">
+                        <li><i class="fa-solid fa-check"></i> Papel Couché: Frente a color / vuelta B/N</li>
+                        <li><i class="fa-solid fa-check"></i> <strong>Tarjetas Laminadas:</strong> Color ambos lados</li>
+                        <li><i class="fa-solid fa-check"></i> Plastificado resistente al agua</li>
+                    </ul>
+                    <a href="https://wa.me/?text=Hola,%20me%20interesa%20cotizar%20Tarjetas%20de%20Presentacion" class="card-btn" target="_blank">Cotizar por WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- 3. Notas de Remisión -->
+            <div class="card">
+                <div class="card-img-container">
+                    <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=600&q=80" alt="Notas de Remisión" class="card-img">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Notas de Remisión y Folios</h3>
+                    <p class="card-text">Formatos contables impresos a la medida para mantener el control administrativo de tu empresa.</p>
+                    <ul class="card-features">
+                        <li><i class="fa-solid fa-check"></i> Diferentes medidas disponibles</li>
+                        <li><i class="fa-solid fa-check"></i> Hojas de copia al gusto (duplicado, triplicado)</li>
+                        <li><i class="fa-solid fa-check"></i> Foliadas y engomadas en bloc</li>
+                    </ul>
+                    <a href="https://wa.me/?text=Hola,%20me%20interesa%20cotizar%20Notas%20de%20Remision" class="card-btn" target="_blank">Cotizar por WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- 4. Plumas Publicitarias -->
+            <div class="card">
+                <div class="card-img-container">
+                    <img src="https://images.unsplash.com/photo-1585336261026-6757c54e3ed7?auto=format&fit=crop&w=600&q=80" alt="Plumas Publicitarias" class="card-img">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Plumas Promocionales</h3>
+                    <p class="card-text">El regalo promocional clásico para posicionar tu marca en el día a día de tus clientes.</p>
+                    <ul class="card-features">
+                        <li><i class="fa-solid fa-check"></i> Impresión DTF UV en alta resolución</li>
+                        <li><i class="fa-solid fa-check"></i> Grabado Láser de alta precisión</li>
+                        <li><i class="fa-solid fa-check"></i> Modelos plásticos y metálicos</li>
+                    </ul>
+                    <a href="https://wa.me/?text=Hola,%20me%20interesa%20cotizar%20Plumas%20Promocionales" class="card-btn" target="_blank">Cotizar por WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- 5. Textiles Personalizados -->
+            <div class="card">
+                <div class="card-img-container">
+                    <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=600&q=80" alt="Textiles Personalizados" class="card-img">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Textiles Personalizados</h3>
+                    <p class="card-text">Uniformes corporativos, prendas publicitarias y vestimenta personalizada de gran durabilidad.</p>
+                    <ul class="card-features">
+                        <li><i class="fa-solid fa-check"></i> Playeras, Gorras y Sudaderas</li>
+                        <li><i class="fa-solid fa-check"></i> Estampado en DTF, Serigrafía y Vinil</li>
+                        <li><i class="fa-solid fa-check"></i> Desde piezas individuales hasta mayoreo</li>
+                    </ul>
+                    <a href="https://wa.me/?text=Hola,%20me%20interesa%20cotizar%20Textiles%20Personalizados" class="card-btn" target="_blank">Cotizar por WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- 6. Artículos Promocionales (Vasos, Tazas, Llaveros) -->
+            <div class="card">
+                <div class="card-img-container">
+                    <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80" alt="Promocionales Vasos y Tazas" class="card-img">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Vasos, Tazas y Llaveros</h3>
+                    <p class="card-text">Artículos promocionales utilitarios con el grabado o estampado de tu identidad corporativa.</p>
+                    <ul class="card-features">
+                        <li><i class="fa-solid fa-check"></i> Tazas cerámicas y termos metálicos</li>
+                        <li><i class="fa-solid fa-check"></i> Vasos plásticos y promocionales</li>
+                        <li><i class="fa-solid fa-check"></i> Llaveros acrílicos y metálicos</li>
+                    </ul>
+                    <a href="https://wa.me/?text=Hola,%20me%20interesa%20cotizar%20Vasos,%20Tazas%20o%20Llaveros" class="card-btn" target="_blank">Cotizar por WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- 7. Vinil y Stickers -->
+            <div class="card">
+                <div class="card-img-container">
+                    <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80" alt="Vinil y Stickers" class="card-img">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Vinil Adhesivo y Stickers</h3>
+                    <p class="card-text">Decoración comercial y etiquetas adhesivas con corte de contorno exacto para tus productos.</p>
+                    <ul class="card-features">
+                        <li><i class="fa-solid fa-check"></i> Stickers impresos al gusto en planilla o sueltos</li>
+                        <li><i class="fa-solid fa-check"></i> Vinil decorativo a la medida para aparadores</li>
+                        <li><i class="fa-solid fa-check"></i> Material resistente a intemperie</li>
+                    </ul>
+                    <a href="https://wa.me/?text=Hola,%20me%20interesa%20cotizar%20Vinil%20y%20Stickers" class="card-btn" target="_blank">Cotizar por WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- 8. Volantes, Flyers y Revistas -->
+            <div class="card">
+                <div class="card-img-container">
+                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=600&q=80" alt="Volantes y Revistas" class="card-img">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Volantes, Flyers y Revistas</h3>
+                    <p class="card-text">Publicidad impresa directa de alto impacto visual para promocionar tus ofertas y servicios.</p>
+                    <ul class="card-features">
+                        <li><i class="fa-solid fa-check"></i> Volantes y Flyers en papel couché brillante</li>
+                        <li><i class="fa-solid fa-check"></i> Revistas y catálogos publicitarios engrapados</li>
+                        <li><i class="fa-solid fa-check"></i> Excelente nitidez de impresión</li>
+                    </ul>
+                    <a href="https://wa.me/?text=Hola,%20me%20interesa%20cotizar%20Volantes%20o%20Revistas" class="card-btn" target="_blank">Cotizar por WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- 9. Soluciones Digitales (Páginas Web y Códigos QR) -->
+            <div class="card">
+                <div class="card-img-container">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" alt="Paginas Web y QR" class="card-img">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Páginas Web y Códigos QR</h3>
+                    <p class="card-text">Lleva tu presencia al mundo digital con herramientas tecnológicas de vanguardia adaptadas a tu negocio.</p>
+                    <ul class="card-features">
+                        <li><i class="fa-solid fa-check"></i> Sitios web modernos y adaptables a celulares</li>
+                        <li><i class="fa-solid fa-check"></i> Códigos QR para menús, enlaces o redes</li>
+                        <li><i class="fa-solid fa-check"></i> Integración directa a WhatsApp</li>
+                    </ul>
+                    <a href="https://wa.me/?text=Hola,%20me%20interesa%20cotizar%20Páginas%20Web%20o%20Códigos%20QR" class="card-btn" target="_blank">Cotizar por WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- 10. Calendarios y Bolsas Publicitarias -->
+            <div class="card">
+                <div class="card-img-container">
+                    <img src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=600&q=80" alt="Calendarios y Bolsas" class="card-img">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Calendarios y Bolsas Publicitarias</h3>
+                    <p class="card-text">Presencia constante durante todo el año en los hogares y negocios de tus clientes.</p>
+                    <ul class="card-features">
+                        <li><i class="fa-solid fa-check"></i> Calendarios de pared, faldón y bolsillo</li>
+                        <li><i class="fa-solid fa-check"></i> Bolsas publicitarias de tela/ecológicas</li>
+                        <li><i class="fa-solid fa-check"></i> Personalización con tu logotipo</li>
+                    </ul>
+                    <a href="https://wa.me/?text=Hola,%20me%20interesa%20cotizar%20Calendarios%20o%20Bolsas" class="card-btn" target="_blank">Cotizar por WhatsApp</a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- BOTÓN FLOTANTE DE WHATSAPP -->
+    <a href="https://wa.me/?text=Hola,%20quisiera%20recibir%20información%20general%20de%20sus%20servicios" class="whatsapp-float" target="_blank" title="Contactar por WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Publicidad Express. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>
