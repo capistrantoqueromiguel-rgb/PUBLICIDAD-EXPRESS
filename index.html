@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publicidad Express | Impresión y Soluciones Publicitarias</title>
+    <!-- FontAwesome para Íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --blue-dark: #0a2540;
+            --blue-primary: #0056b3;
+            --blue-light: #e8f1f5;
+            --gray-bg: #f8fafc;
+            --gray-border: #e2e8f0;
+            --text-dark: #1e293b;
+            --whatsapp-green: #25d366;
+            --accent-orange: #ff6b08;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--gray-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* HEADER & LOGO */
+        header {
+            background-color: #ffffff;
+            border-bottom: 2px solid var(--gray-border);
+            text-align: center;
+            padding: 1.5rem 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 900;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .logo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .main-logo {
+            max-width: 260px;
+            height: auto;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .main-logo:hover {
+            transform: scale(1.03);
+        }
+
+        /* BANNER DISEÑO GRATIS */
+        .free-design-banner {
+            background: linear-gradient(135deg, var(--blue-primary), var(--blue-dark));
+            color: #ffffff;
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            border-bottom: 4px solid var(--accent-orange);
+        }
+
+        .free-design-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .free-design-title {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .free-design-text {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            line-height: 1.7;
+        }
+
+        /* CONTAINER & GRID */
+        .container {
+            max-width: 1250px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: var(--blue-dark);
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-orange);
+            margin: 0.6rem auto 0;
+            border-radius: 2px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        /* TARJETAS DE PRODUCTO */
+        .card {
+            background: #ffffff;
+            border-radius: 12px;
+            border: 1px solid var(--gray-border);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+        }
+
+        .card-img-container {
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+            background-color: var(--blue-light);
+            position: relative;
+        }
+
+        .card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .card:hover .card-img {
+            transform: scale(1.06);
+        }
+
+        .tag-free {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background-color: var(--accent-orange);
+            color: #ffffff;
+            font-size: 0.75rem;
+            font-weight: 800;
+            padding: 0.3rem 0.7rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+
+        .card-body {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-title {
+            font-size: 1.35rem;
+            color: var(--blue-dark);
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+        }
+
+        .card-text {
+            color: #475569;
+            font-size: 0.95rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .card-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .card-features li {
+            font-size: 0.88rem;
+            color: #334155;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.6rem;
+        }
+
+        .card-features li i {
+            color: var(--blue-primary);
+            margin-top: 0.2rem;
+        }
+
+        .card-btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--whatsapp-green);
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 700;
+            padding: 0.85rem;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        .card-btn:hover {
+            background-color: #1eb954;
+        }
+
+        /* BOTÓN FLOTANTE WHATSAPP */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background-color: var(--whatsapp-green);
+            color: #ffffff;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 32px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            z-index: 1000;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: var(--blue-dark);
+            color: #ffffff;
+            text-align: center;
+            padding: 2.5rem 1rem;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .free-design-title { font-size: 1.5rem; }
+            .free-design-text { font-size: 0.95rem; }
+            .main-logo { max-width: 200px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- LOGO DESTACADO EN LA PARTE SUPERIOR -->
+    <header>
+        <div class="logo-container">
+            <img src="logo.png" alt="Publicidad Express Logo" class="main-logo">
+        </div>
+    </header>
+
+    <!-- BANNER DE DISEÑO GRATIS -->
+    <section class="free-design-banner">
+        <div class="free-design-container">
+            <h1 class="free-design-title">✨ Todos nuestros productos incluyen Diseño GRATIS ✨</h1>
+            <p class="free-design-text">
+                En <strong>Publicidad Express</strong> creemos que una buena imagen hace la diferencia. Por eso, todos nuestros productos incluyen diseño personalizado sin costo adicional. Nuestro equipo te ayuda a crear un diseño atractivo, profesional y adaptado a la identidad de tu negocio o evento.
+            </p>
+        </div>
+    </section>
+
+    <!-- CATÁLOGO COMPLETO DE PRODUCTOS -->
+    <main class="container">
+        <h2 class="section-title">Catálogo General de Productos</h2>
+
+        <div class="product-grid">
+
+            <!-- 1. Lonas Publicitarias -->
+            <div class="card">
+                <div class="card-img-container">
+                    <span class="tag-free">Diseño Gratis</span>
+                    <img src="https://images.unsplash.com/photo-1542744094-3a31216914fc?auto=format&fit=crop&w=600&q=80" alt="Lonas Publicitarias" class="card-img">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Lonas Publicitarias</h3>
+                    <p class="card-text">Impulsa tu negocio con lonas publicitarias fabricadas totalmente a la medida. Imprimimos en alta resolución con colores vibrantes y materiales resistentes para exteriores.</p>
+                    <ul class="card-features">
+                        <li><i class="fa-solid fa-check"></i> Medidas totalmente personalizadas.</li>
+                        <li><i class="fa-solid fa-check"></i> Impresión a todo color de alta definición.</li>
+                        <li><i class="fa-solid fa-check"></i> Diferentes tipos de lona, incluyendo lona para toldo.</li>
+                        <li><i class="fa-solid fa-check"></i> Acabados con ojillos y dobladillos según tus necesidades.</li>
+                        <li><i class="fa-solid fa-check"></i> Ideales para negocios, promociones, eventos y publicidad exterior.</li>
+                    </ul>
+                    <a href="https://wa.me/525516863383?text=Hola%20Publicidad%20Express,%20quiero%20cotizar%20Lonas%20Publicitarias" class="card-btn" target="_blank"><i class="fa-brands fa-whatsapp"></i> Cotizar por WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- 2. Etiquetas Personalizadas -->
+            <div class="card">
+                <div class="card-img-container">
+                    <span class="tag-free">Diseño Gratis</span>
+                    <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=600&q=80" alt="Etiquetas Personalizadas" class="card-img">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Etiquetas Personalizadas</h3>
+                    <p class="card-text">Fabricamos etiquetas completamente personalizadas para dar una presentación profesional a cualquier tipo de producto o empaque.</p>
+                    <ul class="card-features">
+                        <li><i class="fa-solid fa-check"></i> Medidas y cortes personalizados.</li>
+                        <li><i class="fa-solid fa-check"></i> Impresión de alta calidad y máxima definición.</li>
+                        <li><i class="fa-solid fa-check"></i> Ideales para envases, botellas, alimentos, cosméticos, ropa y más.</li>
+                    </ul>
+                    <a href="https://wa.me/525516863383?text=Hola%20Publicidad%20Express,%20quiero%20cotizar%20Etiquetas%20Personalizadas" class="card-btn" target="_blank"><i class="fa-brands fa-whatsapp"></i> Cotizar por WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- 3. Tarjetas de Presentación Clásicas -->
+            <div class="card">
+                <div class="card-img-container">
+                    <span class="tag-free">Diseño Gratis</span>
+                    <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=600&q=80" alt="Tarjetas Clásicas" class="card-img">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Tarjetas de Presentación Clásicas</h3>
+                    <p class="card-text">Una opción económica y altamente profesional para presentar tu negocio o servicios de manera efectiva.</p>
+                    <ul class="card-features">
+                        <li><i class="fa-solid fa-check"></i> Medida estándar de 9 × 5 cm.</li>
+                        <li><i class="fa-solid fa-check"></i> Papel tipo cartoncillo (Couché) de excelente rigidez.</li>
+                        <li><i class="fa-solid fa-check"></i> Impresión a color por el frente.</li>
+                        <li><i class="fa-solid fa-check"></i> Impresión blanco y negro por la parte posterior.</li>
+                    </ul>
+                    <a href="https://wa.me/525516863383?text=Hola%20Publicidad%20Express,%20quiero%20cotizar%20Tarjetas%20de%20Presentación%20Clásicas" class="card-btn" target="_blank"><i class="fa-brands fa-whatsapp"></i> Cotizar por WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- 4. Tarjetas Laminadas Premium -->
+            <div class="card">
+                <div class="card-img-container">
+                    <span class="tag-free">Diseño Gratis</span>
+                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=600&q=80" alt="Tarjetas Laminadas Premium" class="card-img">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Tarjetas Laminadas Premium</h3>
+                    <p class="card-text">La mejor opción para quienes buscan una imagen elegante, resistente y de gran durabilidad.</p>
+                    <ul class="card-features">
+                        <li><i class="fa-solid fa-check"></i> Medida estándar de 9 × 5 cm.</li>
+                        <li><i class="fa-solid fa-check"></i> Impresión a color por ambos lados.</li>
+                        <li><i class="fa-solid fa-check"></i> Laminado protector mate o brillante.</li>
+                        <li><i class="fa-solid fa-check"></i> Totalmente resistentes al agua y al desgaste.</li>
+                    </ul>
+                    <a href="https://wa.me/525516863383?text=Hola%20Publicidad%20Express,%20quiero%20cotizar%20Tarjetas%20Laminadas%20Premium" class="card-btn" target="_blank"><i class="fa-brands fa-whatsapp"></i> Cotizar por WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- 5. Tarjetas Laminadas con Barniz a Registro -->
+            <div class="card">
+                <div class="card-img-container">
+                    <span class="tag-free">Diseño Gratis</span>
+                    <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80" alt="Tarjetas Barniz a Registro" class="card-img">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Tarjetas con Barniz a Registro</h3>
+                    <p class="card-text">Haz que tu marca destaque con un acabado de lujo con textura brillante y relieve visual sobre tus detalles clave.</p>
+                    <ul class="card-features">
+                        <li><i class="fa-solid fa-check"></i> Medida estándar de 9 × 5 cm.</li>
+                        <li><i class="fa-solid fa-check"></i> Impresión a color por ambos lados + Laminado Premium.</li>
+                        <li><i class="fa-solid fa-check"></i> Barniz a registro brillante sobre logotipos o textos.</li>
+                        <li><i class="fa-solid fa-check"></i> Crea un efecto táctil y visual exclusivo.</li>
+                    </ul>
+                    <a href="https://wa.me/525516863383?text=Hola%20Publicidad%20Express,%20quiero%20cotizar%20Tarjetas%20con%20Barniz%20a%20Registro" class="card-btn" target="_blank"><i class="fa-brands fa-whatsapp"></i> Cotizar por WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- 6. Volantes (Flyers) -->
+            <div class="card">
+                <div class="card-img-container">
+                    <span class="tag-free">Diseño Gratis</span>
+                    <img src="https://images.unsplash.com/photo-1572021335469-31706a17aaef?auto=format&fit=crop&w=600&q=80" alt="Volantes Flyers" class="card-img">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Volantes (Flyers)</h3>
+                    <p class="card-text">Promociona tus eventos, productos o servicios masivamente con volantes de excelente nitidez e impresión.</p>
+                    <ul class="card-features">
+                        <li><i class="fa-solid fa-check"></i> Impresión a color por ambos lados o color/vuelta B/N.</li>
+                        <li><i class="fa-solid fa-check"></i> Medida 1/4 de carta.</li>
+                        <li><i class="fa-solid fa-check"></i> Medida 1/2 carta.</li>
+                        <li><i class="fa-solid fa-check"></i> Medida Carta completa.</li>
+                    </ul>
+                    <a href="https://wa.me/525516863383?text=Hola%20Publicidad%20Express,%20quiero%20cotizar%20Volantes%20(Flyers)" class="card-btn" target="_blank"><i class="fa-brands fa-whatsapp"></i> Cotizar por WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- 7. Notas de Remisión -->
+            <div class="card">
+                <div class="card-img-container">
+                    <span class="tag-free">Diseño Gratis</span>
+                    <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=600&q=80" alt="Notas de Remision" class="card-img">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Notas de Remisión</h3>
+                    <p class="card-text">Talonarios profesionales y foliados para llevar la administración y comprobantes de tu negocio en orden.</p>
+                    <ul class="card-features">
+                        <li><i class="fa-solid fa-check"></i> Opciones: Original solo, Original + 1 copia o Original + 2 copias.</li>
+                        <li><i class="fa-solid fa-check"></i> Medidas: 1/4 de carta, 1/2 carta, Carta y Oficio.</li>
+                        <li><i class="fa-solid fa-check"></i> Enblocados y con folio consecutivo opcional.</li>
+                    </ul>
+                    <a href="https://wa.me/525516863383?text=Hola%20Publicidad%20Express,%20quiero%20cotizar%20Notas%20de%20Remisión" class="card-btn" target="_blank"><i class="fa-brands fa-whatsapp"></i> Cotizar por WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- 8. Tazas Personalizadas -->
+            <div class="card">
+                <div class="card-img-container">
+                    <span class="tag-free">Diseño Gratis</span>
+                    <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80" alt="Tazas Personalizadas" class="card-img">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Tazas Personalizadas</h3>
+                    <p class="card-text">Personaliza tazas cerámicas con fotografías, logotipos o diseños exclusivos. Perfectas para regalos, empresas y eventos.</p>
+                    <ul class="card-features">
+                        <li><i class="fa-solid fa-check"></i> Impresión en sublimación de alta durabilidad.</li>
+                        <li><i class="fa-solid fa-check"></i> Apto para microondas y lavavajillas.</li>
+                        <li><i class="fa-solid fa-check"></i> Modelos mágicos, de color e impresiones panorámicas.</li>
+                    </ul>
+                    <a href="https://wa.me/525516863383?text=Hola%20Publicidad%20Express,%20quiero%20cotizar%20Tazas%20Personalizadas" class="card-btn" target="_blank"><i class="fa-brands fa-whatsapp"></i> Cotizar por WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- 9. Recuerdos Personalizados -->
+            <div class="card">
+                <div class="card-img-container">
+                    <span class="tag-free">Diseño Gratis</span>
+                    <img src="https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=600&q=80" alt="Recuerdos Personalizados" class="card-img">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Recuerdos Personalizados</h3>
+                    <p class="card-text">Creamos detalles y recuerdos únicos para cualquier tipo de celebración familiar o empresarial.</p>
+                    <ul class="card-features">
+                        <li><i class="fa-solid fa-check"></i> Vasos, cilindros, detalles de madera y artículos promocionales.</li>
+                        <li><i class="fa-solid fa-check"></i> Personalización total para bodas, bautizos, XV años y empresas.</li>
+                    </ul>
+                    <a href="https://wa.me/525516863383?text=Hola%20Publicidad%20Express,%20quiero%20cotizar%20Recuerdos%20Personalizados" class="card-btn" target="_blank"><i class="fa-brands fa-whatsapp"></i> Cotizar por WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- 10. Encendedores Personalizados -->
+            <div class="card">
+                <div class="card-img-container">
+                    <span class="tag-free">Diseño Gratis</span>
+                    <img src="https://images.unsplash.com/photo-1585336261026-6757c54e3ed7?auto=format&fit=crop&w=600&q=80" alt="Encendedores Personalizados" class="card-img">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Encendedores Personalizados</h3>
+                    <p class="card-text">Un artículo utilitario de alta visibilidad personalizado con tu logotipo, nombre o diseño promocional.</p>
+                    <ul class="card-features">
+                        <li><i class="fa-solid fa-check"></i> Impresión directa full color o grabado.</li>
+                        <li><i class="fa-solid fa-check"></i> Ideales para bares, restaurantes, marcas y eventos.</li>
+                    </ul>
+                    <a href="https://wa.me/525516863383?text=Hola%20Publicidad%20Express,%20quiero%20cotizar%20Encendedores%20Personalizados" class="card-btn" target="_blank"><i class="fa-brands fa-whatsapp"></i> Cotizar por WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- 11. Plumas Personalizadas -->
+            <div class="card">
+                <div class="card-img-container">
+                    <span class="tag-free">Diseño Gratis</span>
+                    <img src="https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?auto=format&fit=crop&w=600&q=80" alt="Plumas Personalizadas" class="card-img">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Plumas Personalizadas</h3>
+                    <p class="card-text">Una excelente opción para promocionar tu empresa o evento. Presencia constante en manos de tus clientes.</p>
+                    <ul class="card-features">
+                        <li><i class="fa-solid fa-check"></i> Personalización con nombres, logotipos o diseños gráficos.</li>
+                        <li><i class="fa-solid fa-check"></i> Modelos plásticos, ejecutivos y metálicos.</li>
+                    </ul>
+                    <a href="https://wa.me/525516863383?text=Hola%20Publicidad%20Express,%20quiero%20cotizar%20Plumas%20Personalizadas" class="card-btn" target="_blank"><i class="fa-brands fa-whatsapp"></i> Cotizar por WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- 12. Grabado Láser -->
+            <div class="card">
+                <div class="card-img-container">
+                    <span class="tag-free">Diseño Gratis</span>
+                    <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80" alt="Grabado Laser" class="card-img">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Grabado Láser de Alta Precisión</h3>
+                    <p class="card-text">Personalizamos una gran variedad de productos con acabados indelebles y de máxima elegancia.</p>
+                    <ul class="card-features">
+                        <li><i class="fa-solid fa-check"></i> Grabado sobre metal, madera, acrílico, termo y piel.</li>
+                        <li><i class="fa-solid fa-check"></i> Ideal para reconocimientos, termos y regalos corporativos.</li>
+                    </ul>
+                    <a href="https://wa.me/525516863383?text=Hola%20Publicidad%20Express,%20quiero%20cotizar%20Servicios%20de%20Grabado%20Láser" class="card-btn" target="_blank"><i class="fa-brands fa-whatsapp"></i> Cotizar por WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- 13. Vinil Microperforado -->
+            <div class="card">
+                <div class="card-img-container">
+                    <span class="tag-free">Diseño Gratis</span>
+                    <img src="https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=600&q=80" alt="Vinil Microperforado" class="card-img">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Vinil Microperforado</h3>
+                    <p class="card-text">La solución perfecta para ventanas y aparadores. Muestra publicidad hacia el exterior mientras mantienes la visibilidad e iluminación por dentro.</p>
+                    <ul class="card-features">
+                        <li><i class="fa-solid fa-check"></i> Fabricación totalmente a la medida.</li>
+                        <li><i class="fa-solid fa-check"></i> Permite la entrada de luz reduciendo el calor.</li>
+                        <li><i class="fa-solid fa-check"></i> Excelente para oficinas, locales comerciales y cristales de vehículos.</li>
+                    </ul>
+                    <a href="https://wa.me/525516863383?text=Hola%20Publicidad%20Express,%20quiero%20cotizar%20Vinil%20Microperforado" class="card-btn" target="_blank"><i class="fa-brands fa-whatsapp"></i> Cotizar por WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- 14. Vinil Blanco Impreso -->
+            <div class="card">
+                <div class="card-img-container">
+                    <span class="tag-free">Diseño Gratis</span>
+                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=600&q=80" alt="Vinil Blanco Impreso" class="card-img">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Vinil Blanco Impreso</h3>
+                    <p class="card-text">Publicidad fotográfica de gran impacto para forrar muros, mamparas, cristales y señalética.</p>
+                    <ul class="card-features">
+                        <li><i class="fa-solid fa-check"></i> Fabricación totalmente personalizada a las medidas requeridas.</li>
+                        <li><i class="fa-solid fa-check"></i> Impresión fotográfica HD en tintas duraderas.</li>
+                        <li><i class="fa-solid fa-check"></i> Apto para interiores y intemperie.</li>
+                    </ul>
+                    <a href="https://wa.me/525516863383?text=Hola%20Publicidad%20Express,%20quiero%20cotizar%20Vinil%20Blanco%20Impreso" class="card-btn" target="_blank"><i class="fa-brands fa-whatsapp"></i> Cotizar por WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- 15. DTF Textil -->
+            <div class="card">
+                <div class="card-img-container">
+                    <span class="tag-free">Diseño Gratis</span>
+                    <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=600&q=80" alt="DTF Textil" class="card-img">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">DTF Textil</h3>
+                    <p class="card-text">Técnica de impresión digital directa a film para personalizar cualquier tipo de tela con detalle fotográfico.</p>
+                    <ul class="card-features">
+                        <li><i class="fa-solid fa-check"></i> Colores intensos y alta definición.</li>
+                        <li><i class="fa-solid fa-check"></i> Excelente adherencia, flexibilidad y resistencia a lavadas.</li>
+                        <li><i class="fa-solid fa-check"></i> Aplicable sobre algodón, poliéster y mezclas de tela.</li>
+                    </ul>
+                    <a href="https://wa.me/525516863383?text=Hola%20Publicidad%20Express,%20quiero%20cotizar%20Estampado%20DTF%20Textil" class="card-btn" target="_blank"><i class="fa-brands fa-whatsapp"></i> Cotizar por WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- 16. DTF UV -->
+            <div class="card">
+                <div class="card-img-container">
+                    <span class="tag-free">Diseño Gratis</span>
+                    <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80" alt="DTF UV" class="card-img">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">DTF UV (Superficies Rígidas)</h3>
+                    <p class="card-text">Impresión de alta adherencia para personalización de objetos rígidos sin necesidad de horneado o sellado.</p>
+                    <ul class="card-features">
+                        <li><i class="fa-solid fa-check"></i> Ideal para acrílico, vidrio, plástico, metal y madera.</li>
+                        <li><i class="fa-solid fa-check"></i> Excelente definición, brillo y resistencia al rayado.</li>
+                    </ul>
+                    <a href="https://wa.me/525516863383?text=Hola%20Publicidad%20Express,%20quiero%20cotizar%20DTF%20UV" class="card-btn" target="_blank"><i class="fa-brands fa-whatsapp"></i> Cotizar por WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- 17. Playeras Personalizadas -->
+            <div class="card">
+                <div class="card-img-container">
+                    <span class="tag-free">Diseño Gratis</span>
+                    <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=600&q=80" alt="Playeras Personalizadas" class="card-img">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Playeras Personalizadas</h3>
+                    <p class="card-text">Playeras para equipos de trabajo, eventos masivos, uniformes corporativos o marcas independientes.</p>
+                    <ul class="card-features">
+                        <li><i class="fa-solid fa-check"></i> Disponibles con impresión DTF, Vinil Textil y Serigrafía.</li>
+                        <li><i class="fa-solid fa-check"></i> Variedad de tallas y colores.</li>
+                    </ul>
+                    <a href="https://wa.me/525516863383?text=Hola%20Publicidad%20Express,%20quiero%20cotizar%20Playeras%20Personalizadas" class="card-btn" target="_blank"><i class="fa-brands fa-whatsapp"></i> Cotizar por WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- 18. Bolsas Publicitarias -->
+            <div class="card">
+                <div class="card-img-container">
+                    <span class="tag-free">Diseño Gratis</span>
+                    <img src="https://images.unsplash.com/photo-1597484661643-2f5fef640dd1?auto=format&fit=crop&w=600&q=80" alt="Bolsas Publicitarias" class="card-img">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Bolsas Publicitarias</h3>
+                    <p class="card-text">Bolsas ecológicas e impresas para fortalecer la presencia corporativa de tu marca o tienda en cada entrega.</p>
+                    <ul class="card-features">
+                        <li><i class="fa-solid fa-check"></i> Disponibles en tela ecológica (Non Woven), papel y plástico.</li>
+                        <li><i class="fa-solid fa-check"></i> Diferentes tamaños y colores.</li>
+                    </ul>
+                    <a href="https://wa.me/525516863383?text=Hola%20Publicidad%20Express,%20quiero%20cotizar%20Bolsas%20Publicitarias" class="card-btn" target="_blank"><i class="fa-brands fa-whatsapp"></i> Cotizar por WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- 19. Calendarios Personalizados -->
+            <div class="card">
+                <div class="card-img-container">
+                    <span class="tag-free">Diseño Gratis</span>
+                    <img src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=600&q=80" alt="Calendarios Personalizados" class="card-img">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Calendarios Personalizados</h3>
+                    <p class="card-text">La publicidad que permanece todo el año dentro de las casas y oficinas de tus clientes.</p>
+                    <ul class="card-features">
+                        <li><i class="fa-solid fa-check"></i> Calendarios de faldón, pared, escritorio y bolsillo.</li>
+                        <li><i class="fa-solid fa-check"></i> Diseños corporativos y publicitarios totalmente a medida.</li>
+                    </ul>
+                    <a href="https://wa.me/525516863383?text=Hola%20Publicidad%20Express,%20quiero%20cotizar%20Calendarios%20Personalizados" class="card-btn" target="_blank"><i class="fa-brands fa-whatsapp"></i> Cotizar por WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- 20. Coroplast -->
+            <div class="card">
+                <div class="card-img-container">
+                    <span class="tag-free">Diseño Gratis</span>
+                    <img src="https://images.unsplash.com/photo-1542744094-3a31216914fc?auto=format&fit=crop&w=600&q=80" alt="Coroplast Publicitario" class="card-img">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Coroplast (Plástico Corrugado)</h3>
+                    <p class="card-text">Anuncios rígidos, ligeros e impermeables para publicidad de alto impacto en interiores y exteriores.</p>
+                    <ul class="card-features">
+                        <li><i class="fa-solid fa-check"></i> Fabricación totalmente a la medida.</li>
+                        <li><i class="fa-solid fa-check"></i> Posibilidad de suaje / corte en cualquier figura.</li>
+                        <li><i class="fa-solid fa-check"></i> Excelente para campañas políticas, inmobiliarias y señalización.</li>
+                    </ul>
+                    <a href="https://wa.me/525516863383?text=Hola%20Publicidad%20Express,%20quiero%20cotizar%20Anuncios%20de%20Coroplast" class="card-btn" target="_blank"><i class="fa-brands fa-whatsapp"></i> Cotizar por WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- 21. Muestrarios -->
+            <div class="card">
+                <div class="card-img-container">
+                    <span class="tag-free">Diseño Gratis</span>
+                    <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=600&q=80" alt="Muestrarios Personalizados" class="card-img">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Muestrarios Personalizados</h3>
+                    <p class="card-text">Presenta tus catálogos físicos y acabados de productos de manera ordenada, resistente y profesional.</p>
+                    <ul class="card-features">
+                        <li><i class="fa-solid fa-check"></i> Carpetas, muestrarios de materiales y catálogo físico.</li>
+                        <li><i class="fa-solid fa-check"></i> Acabados de alta durabilidad para venta de campo.</li>
+                    </ul>
+                    <a href="https://wa.me/525516863383?text=Hola%20Publicidad%20Express,%20quiero%20cotizar%20Muestrarios%20Personalizados" class="card-btn" target="_blank"><i class="fa-brands fa-whatsapp"></i> Cotizar por WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- 22. Revistas Personalizadas -->
+            <div class="card">
+                <div class="card-img-container">
+                    <span class="tag-free">Diseño Gratis</span>
+                    <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=600&q=80" alt="Revistas Personalizadas" class="card-img">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Revistas Personalizadas</h3>
+                    <p class="card-text">Diseño e impresión editorial de excelente calidad para proyectos informativos y publicitarios.</p>
+                    <ul class="card-features">
+                        <li><i class="fa-solid fa-check"></i> Ideales para empresas, escuelas, catálogos extensos y eventos.</li>
+                        <li><i class="fa-solid fa-check"></i> Engrapado o encuadernado a caballo.</li>
+                    </ul>
+                    <a href="https://wa.me/525516863383?text=Hola%20Publicidad%20Express,%20quiero%20cotizar%20Revistas%20Personalizadas" class="card-btn" target="_blank"><i class="fa-brands fa-whatsapp"></i> Cotizar por WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- 23. Menús Personalizados -->
+            <div class="card">
+                <div class="card-img-container">
+                    <span class="tag-free">Diseño Gratis</span>
+                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=80" alt="Menus Personalizados" class="card-img">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Menús para Restaurantes</h3>
+                    <p class="card-text">Diseño e impresión de menús elegantes y lavables para negocios de alimentos y bebidas.</p>
+                    <ul class="card-features">
+                        <li><i class="fa-solid fa-check"></i> Para restaurantes, cafeterías, bares y banquetes.</li>
+                        <li><i class="fa-solid fa-check"></i> Acabados plastificados, encapsulados y rigidos lavables.</li>
+                    </ul>
+                    <a href="https://wa.me/525516863383?text=Hola%20Publicidad%20Express,%20quiero%20cotizar%20Menús%20Personalizados" class="card-btn" target="_blank"><i class="fa-brands fa-whatsapp"></i> Cotizar por WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- 24. Gorras Personalizadas -->
+            <div class="card">
+                <div class="card-img-container">
+                    <span class="tag-free">Diseño Gratis</span>
+                    <img src="https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=600&q=80" alt="Gorras Personalizadas" class="card-img">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Gorras Personalizadas</h3>
+                    <p class="card-text">Personalizamos gorras con distintas técnicas de alta resolución para promocionar tu marca.</p>
+                    <ul class="card-features">
+                        <li><i class="fa-solid fa-check"></i> Opciones en Bordado, DTF y Vinil Textil.</li>
+                        <li><i class="fa-solid fa-check"></i> Modelos tipo trucker, planas o deportivas.</li>
+                        <li><i class="fa-solid fa-check"></i> Perfectas para uniformes, promociones y eventos.</li>
+                    </ul>
+                    <a href="https://wa.me/525516863383?text=Hola%20Publicidad%20Express,%20quiero%20cotizar%20Gorras%20Personalizadas" class="card-btn" target="_blank"><i class="fa-brands fa-whatsapp"></i> Cotizar por WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- 25. Invitaciones Personalizadas -->
+            <div class="card">
+                <div class="card-img-container">
+                    <span class="tag-free">Diseño Gratis</span>
+                    <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=80" alt="Invitaciones Personalizadas" class="card-img">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Invitaciones Personalizadas</h3>
+                    <p class="card-text">Diseños finos e impresiones exclusivas para hacer inolvidable la presentación de tus festejos.</p>
+                    <ul class="card-features">
+                        <li><i class="fa-solid fa-check"></i> Medidas y materiales especiales (couché, opalina, texturizados).</li>
+                        <li><i class="fa-solid fa-check"></i> Ideales para bodas, XV años, cumpleaños, bautizos y graduaciones.</li>
+                    </ul>
+                    <a href="https://wa.me/525516863383?text=Hola%20Publicidad%20Express,%20quiero%20cotizar%20Invitaciones%20Personalizadas" class="card-btn" target="_blank"><i class="fa-brands fa-whatsapp"></i> Cotizar por WhatsApp</a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- BOTÓN FLOTANTE GENERAL DE WHATSAPP -->
+    <a href="https://wa.me/525516863383?text=Hola%20Publicidad%20Express,%20me%20gustaría%20solicitar%20información%20general" class="whatsapp-float" target="_blank" title="Contactar por WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Publicidad Express. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>
